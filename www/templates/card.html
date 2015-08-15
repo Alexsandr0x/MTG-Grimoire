@@ -1,0 +1,24 @@
+ 
+
+ <ion-view title="MTG Searcher">
+ <div ng-controller="CardController">
+
+  <div class="bar bar-header bar-royal">
+   <button ng-click="goToSearch()"  class="button icon-left ion-chevron-left button-clear button-dark"></button>
+   <h1 class="title">MTG Finder</h1>
+  </div>
+    <ion-content padding="true" class="has-header">
+		<div class="list card"  ng-repeat="c in card" align="middle">
+
+		  <div class="item item-avatar">
+		    <!--img src="avatar.jpg"-->
+		    <h2>{{c.name}}</h2>
+		    <p>mana cost: {{c.mana}}</p>
+		  </div>
+
+		  <img src="{{c.image}}" align="middle">
+		</div>
+	</ion-content>
+
+</div>
+</ion-view>

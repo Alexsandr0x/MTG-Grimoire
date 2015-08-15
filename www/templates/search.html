@@ -1,0 +1,35 @@
+  <div>
+    <div>
+      <div class="bar bar-header bar-royal">
+        <h1 class="title">MTG Finder</h1>
+      </div>
+    </div>
+</div>
+<ion-view title="MTG Searcher">
+    <ion-content padding="true" class="has-header">
+    <form  ng-controller="SearchController">
+        <div class="list card">
+            <div class="item item-divider">What you looking for?</div>
+            <div class="item item-body">
+              <div class="list list-inset">
+                <label class="item item-input">
+                  <button class="button button-royal" ng-click="updateSearch()">
+                    <i class="icon ion-search placeholder-icon" ></i>
+                  </button>
+                  <input style="font-size:24px" type="text" placeholder="Search" ng-model="search">
+                </label>
+              </div>          
+            </div>
+        </div>
+        <div class="list card">
+            <div class="item item-divider">Card</div>
+            <div class="item item-body">
+              <div ng-repeat="card in cards">
+                <button name="c-{{card.id}}" class="button button-block button-clear button-royal"
+                ng-click="goToCard({{card.id}})">{{card.name}}</button>
+              </div>
+            </div>
+        </div>
+        </form>
+    </ion-content>
+</ion-view>
