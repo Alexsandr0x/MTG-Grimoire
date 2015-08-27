@@ -10,7 +10,12 @@
           width: 100%;
           height: 504px;
       }
+      .background, .background .pane{
+        background-color: #C5CAE9;
+      }
     </style>
+
+    <style type="css/personalizedApp.css"></style>
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <script src="lib/ionic/js/ionic.bundle.js"></script>
@@ -25,8 +30,6 @@
   </head>
   <body ng-app="app" animation="slide-left-right-ios7">
 
-
-
-    <ion-nav-view></ion-nav-view>
+    <ion-nav-view class="background"></ion-nav-view>
   </body>
 </html>

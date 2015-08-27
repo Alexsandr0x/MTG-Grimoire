@@ -35,15 +35,18 @@ angular.module('app', ['ionic', 'app.controllers'])
       templateUrl: 'templates/search.html'
     })
     
-    .state('card', {
+    .state('Card', {
       url: '/card/:id',
       templateUrl: 'templates/card.html'
     })
-    ;
 
+    .state('Menu', {
+      url: '/menu',
+      templateUrl: 'templates/menu.html'
+    })
+    ;
   // if none of the above states are matched, use this as the fallback
-  
-  $urlRouterProvider.otherwise('/search');
+  $urlRouterProvider.otherwise('/menu');
   
 
 

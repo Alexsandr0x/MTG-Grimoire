@@ -1,0 +1,59 @@
+ <ion-view title="MTG Grimoire">
+
+ <div ng-controller="TransitionController">
+
+  <div class="bar bar-header bar-royal">
+   <h1 class="title">MTG Grimoire</h1>
+  </div>
+    <ion-content padding="true" class="has-header">
+    	<div class="row">
+	    	<div class="col">
+	    		<div class="card">
+				  <div class="item item-text-wrap">
+				    MTG Grimoire is everything you need to play Magic: The Gathering unite in on single app!<br><br>
+				    with MTG-G you can: Search for cards, build your deck, compare your card list with pre-build decks
+				  </div>
+				</div>
+	    	</div>
+    	</div>
+
+    	<div class="row">
+	    	<div class="col">
+	    		<div class="list card">
+
+				  <div class="item item-text-wrap" align="middle">
+				  	<h2 class = "assertive">Search</h2>
+				  </div>
+				  <div class="item item-image">
+					<img src="res/SearchImg.jpg" align="middle">
+				  </div>
+
+
+				  <a class="item item-icon-left assertive" ng-click="goToSearch()">
+				    <i class="icon ion-android-search"></i>
+				    Search Cards
+				  </a>
+				</div>
+			</div>
+			<div class="col">
+	    		<div class="list card">
+
+				  <div class="item item-text-wrap" align="middle">
+				  	<h2 class = "positive">Match Manager</h2>
+				  </div>
+				  <div class="item item-image">
+					<img src="res/MatchImg.jpg" align="middle">
+				  </div>
+
+
+				  <a class="item item-icon-left positive" ng-click="goToSearch()">
+				    <i class="icon ion-ios-redo"></i>
+				    go to Match Manager
+				  </a>
+				</div>
+	    	</div>
+	    </div>
+	</ion-content>
+
+</div>
+</ion-view>

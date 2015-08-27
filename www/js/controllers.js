@@ -1,5 +1,4 @@
-angular.module('app.controllers',[])
-
+angular.module('app.controllers', [])
 .controller('SearchController', function($scope,  $http){
   var pendingTask;
 
@@ -11,9 +10,13 @@ angular.module('app.controllers',[])
     $scope.search = "Pacifism";
     requestByName();
   }
-
+  
   $scope.goToCard = function(id){
   	window.location = "#/card/"+id;
+  }
+
+  $scope.goToMenu = function(){
+    window.location = "#/menu";
   }
 
   function requestByName() {
@@ -21,8 +24,20 @@ angular.module('app.controllers',[])
     .success(function(response){
       $scope.cards = response;
     });}
+})
 
+.controller('TransitionController', function($scope, $stateParams){
+  $scope.goToSearch = function(){
+    window.location = "#/search";
+  }
 
+  $scope.goToMenu = function(){
+    window.location = "#/menu";
+  }
+
+  $scope.goToMatchManager = function(){
+    window.location = "#/matchManager";
+  }
 })
 
 .controller('CardController', function($scope,  $http, $stateParams){
@@ -33,11 +48,15 @@ angular.module('app.controllers',[])
 	function requestById() {
 	  	$http.get("http://api.mtgapi.com/v1/card/id/"+$scope.cardId)
 	    .success(function(response){
-	      $scope.card = response;
-	      window.alert(card.name);
+	      $scope.card = response[0];
+        console.log(response);
     });}
 
-	$scope.goToSearch = function(id){
-  		window.location = "#/search";
-  	}
+	$scope.goToSearch = function(){
+  	window.location = "#/search";
+  }
+
+  $scope.goToMenu = function(){
+    window.location = "#/menu";
+  }
 });

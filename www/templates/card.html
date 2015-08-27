@@ -1,22 +1,32 @@
  
 
- <ion-view title="MTG Searcher">
+ <ion-view title="MTG Grimoire">
+
  <div ng-controller="CardController">
 
   <div class="bar bar-header bar-royal">
    <button ng-click="goToSearch()"  class="button icon-left ion-chevron-left button-clear button-dark"></button>
-   <h1 class="title">MTG Finder</h1>
+   <h1 class="title">MTG Grimoire</h1>
   </div>
     <ion-content padding="true" class="has-header">
-		<div class="list card"  ng-repeat="c in card" align="middle">
+		<div class="list card"  ng-model="card" align="middle">
 
 		  <div class="item item-avatar">
 		    <!--img src="avatar.jpg"-->
-		    <h2>{{c.name}}</h2>
-		    <p>mana cost: {{c.mana}}</p>
+		    <h2>{{card.name}}</h2>
+		    <p>mana cost: {{card.mana}}</p>
 		  </div>
 
-		  <img src="{{c.image}}" align="middle">
+		  <img ng-src="{{card.image}}" align="middle">
+		  <div id="cardinfo" class="item item-avatar">
+		  	type: {{card.type}}
+		  </div>
+		  <div id="cardtext" class="item item-avatar">
+		  	<div class="item item-text-wrap">
+		  		<p>{{card.text}}</p>
+		  	</div>
+		  </div>
+
 		</div>
 	</ion-content>
 
