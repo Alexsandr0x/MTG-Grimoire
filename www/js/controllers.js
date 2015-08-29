@@ -26,6 +26,61 @@ angular.module('app.controllers', [])
     });}
 })
 
+.controller('ScoreController', function($scope, $stateParams, $ionicActionSheet, $ionicPopup){
+
+  $scope.players = [
+        {name:"Jace Beleren", life:20, infect:0},
+        {name:"Ajani", life:20, infect:0}
+  ];
+
+  $scope.changeLP = function(index,hit){
+    $scope.players[index].life += hit;
+    if($scope.players[index].life < 0) $scope.players[index].life = 0;
+  }
+
+  $scope.resetLP = function(index){
+    $scope.players[index].life = 20;
+  }
+
+  $scope.changeI = function(index,hit){
+    $scope.players[index].infect += hit;
+    if($scope.players[index].infect < 0) $scope.players[index].infect = 0;
+    if($scope.players[index].infect > 10) $scope.players[index].infect = 10;
+  }
+
+  $scope.resetI = function(index){
+    $scope.players[index].infect = 0;
+  }
+
+  $scope.showOptions = function(){
+    var MatchOptions = $ionicActionSheet.show({
+      buttons:[
+        {text: 'One X One'}
+      ],
+      titleText: 'Change Match Type',
+      cancelText: 'Cancel',
+      cancel: function() {
+
+      },
+      buttonClicked: function(index){
+        return true;
+      }
+    });
+  }
+
+ $scope.editNamePopup = function(index) {
+
+   var popup = $ionicPopup.alert({
+     title: 'Change Name',
+     scope: $scope,
+     template: '<input ng-model="players['+index+'].name">'
+   });
+ };
+
+
+})
+
+
 .controller('TransitionController', function($scope, $stateParams){
   $scope.goToSearch = function(){
     window.location = "#/search";
@@ -38,6 +93,10 @@ angular.module('app.controllers', [])
   $scope.goToMatchManager = function(){
     window.location = "#/matchManager";
   }
+
+  $scope.goToScore = function(){
+    window.location = "#/score";
+  }
 })
 
 .controller('CardController', function($scope,  $http, $stateParams){
@@ -48,6 +107,7 @@ angular.module('app.controllers', [])
 	function requestById() {
 	  	$http.get("http://api.mtgapi.com/v1/card/id/"+$scope.cardId)
 	    .success(function(response){
+        window.alert(response[0].text[0].replace("\\n","<br>"));
 	      $scope.card = response[0];
         console.log(response);
     });}

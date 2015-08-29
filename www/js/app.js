@@ -40,6 +40,11 @@ angular.module('app', ['ionic', 'app.controllers'])
       templateUrl: 'templates/card.html'
     })
 
+    .state('Score', {
+      url: '/score',
+      templateUrl: 'templates/score.html'
+    })
+
     .state('Menu', {
       url: '/menu',
       templateUrl: 'templates/menu.html'
