@@ -20,7 +20,7 @@ angular.module('app.controllers', [])
   }
 
   function requestByName() {
-  $http.get("http://api.mtgapi.com/v1/card/name/"+$scope.search)
+  $http.get("https://api.deckbrew.com/mtg/cards?name="+$scope.search)
     .success(function(response){
       $scope.cards = response;
     });}
@@ -105,11 +105,10 @@ angular.module('app.controllers', [])
 	requestById();
 
 	function requestById() {
-	  	$http.get("http://api.mtgapi.com/v1/card/id/"+$scope.cardId)
+	  	$http.get("https://api.deckbrew.com/mtg/cards/"+$scope.cardId)
 	    .success(function(response){
-        window.alert(response[0].text[0].replace("\\n","<br>"));
-	      $scope.card = response[0];
-        console.log(response);
+	      $scope.card = response;
+        //console.log(response);
     });}
 
 	$scope.goToSearch = function(){
