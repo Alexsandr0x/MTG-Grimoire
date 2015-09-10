@@ -8,13 +8,13 @@
    <button ng-click="goToSearch()"  class="button icon-left ion-chevron-left button-clear button-dark"></button>
    <h1 class="title">MTG Grimoire</h1>
   </div>
-      	<div class="bar bar-subheader">
+  <div class="bar bar-subheader">
     	  <h2 class="title">{{card.name}}</h2>
-    </div>
+   </div>
 
-    <ion-content padding="true" class="has-subheader">
+    <ion-content class="mtg-card has-subheader" padding="true">
     	<div ng-model="card">
-			<div class="card" align="middle">
+			<div class="card">
 
 			  <div class="item">
 			    <h3>{{card.cost}}</h3>
@@ -32,7 +32,17 @@
 			</div>
 
 			<div class="card" ng-repeat="edition in card.editions">
-			  <img ng-src="{{edition.image_url}}" align="middle">
+
+				<div class="item">{{edition.set}}</div>
+			  	<img ng-src="{{edition.image_url}}">
+				<div class="item">
+					<div class="row">
+						<div class="col col-33 prices-low">low</div>
+						<div class="col col-33 prices-median">median</div>
+						<div class="col col-33 prices-high">high</div>
+					</div>
+				</div>
+
 			</div>
 		</div>
 	</ion-content>
