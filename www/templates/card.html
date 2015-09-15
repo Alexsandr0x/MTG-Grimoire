@@ -1,51 +1,49 @@
- 
+<ion-view title="MTG Grimoire">
 
- <ion-view title="MTG Grimoire">
+  <div ng-controller="CardController">
 
- <div ng-controller="CardController">
-
-  <div class="bar bar-header bar-royal">
-   <button ng-click="goToSearch()"  class="button icon-left ion-chevron-left button-clear button-dark"></button>
-   <h1 class="title">MTG Grimoire</h1>
-  </div>
-  <div class="bar bar-subheader">
-    	  <h2 class="title">{{card.name}}</h2>
-   </div>
+    <div class="bar bar-header bar-royal">
+      <button ng-click="goToSearch()" class="button icon-left ion-chevron-left button-clear button-dark"></button>
+      <h1 class="title">MTG Grimoire</h1>
+    </div>
+    <div class="bar bar-subheader">
+      <h2 class="title">{{card.name}}</h2>
+    </div>
 
     <ion-content class="mtg-card has-subheader" padding="true">
-    	<div ng-model="card">
-			<div class="card">
+      <div ng-model="card">
+        <div class="card">
 
-			  <div class="item">
-			    <h3>{{card.cost}}</h3>
-			  </div>
-			  <div id="cardinfo" class="item item-inset">
-			  	type: <a ng-repeat="type in card.types">
+          <div class="item">
+            <img ng-repeat="c in card.cost track by $index" ng-src="http://gatherer.wizards.com/Handlers/Image.ashx?size=large&type=symbol&name={{c}}">
+          </div>
+          <div id="cardinfo" class="item item-inset">
+            type: <a ng-repeat="type in card.types">
 			  	{{type}}
 			  </a>
-			</div>
-			  <div id="cardtext" class="item">
-			  	<div class="item item-text-wrap">
-			  		<p>{{card.text}}</p>
-			  	</div>
-			  </div>
-			</div>
+          </div>
+          <div id="cardtext" class="item">
+            <div class="item item-text-wrap">
+              <p>{{card.text}}</p>
+            </div>
+          </div>
+        </div>
 
-			<div class="card" ng-repeat="edition in card.editions">
+        <div class="card" ng-repeat="edition in card.editions">
 
-				<div class="item">{{edition.set}}</div>
-			  	<img ng-src="{{edition.image_url}}">
-				<div class="item">
-					<div class="row">
-						<div class="col col-33 prices-low">low</div>
-						<div class="col col-33 prices-median">median</div>
-						<div class="col col-33 prices-high">high</div>
-					</div>
-				</div>
+          <div class="item">{{edition.set}}</div>
+          <img ng-src="{{edition.image_url}}">
+          <div class="item">
+            <div class="row">
+              <div class="col col-33 prices-low">low</div>
+              <div class="col col-33 prices-median">median</div>
+              <div class="col col-33 prices-high">high</div>
+            </div>
+          </div>
 
-			</div>
-		</div>
-	</ion-content>
+        </div>
+      </div>
+    </ion-content>
 
-</div>
+  </div>
 </ion-view>
