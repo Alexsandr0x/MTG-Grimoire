@@ -21,14 +21,19 @@
               <div class="col">
                 <div class="card no-margin" ng-repeat="player in players">
                   <div class="item item-divider">
-                  <div class="row">
-                      <div class="item-button-right">
-                        <h3>{{player.name}}</h3>
-                        <button class="button  button-positive" ng-click="editNamePopup($index)">
-                          <i class="icon ion-edit" ></i>
-                        </button>
-                      </div>
-                    </div>
+                      <div class="row">
+                            <h3 class="col col-33">{{player.name}}</h3>
+                            <div class="col col-10 col-offset-58">
+                                <div class="button-bar">
+                                    <a class="button button-small  button-assertive" ng-click="editNamePopup($index)">
+                                      <i class="icon ion-minus-circled" ></i>
+                                    </a>
+                                    <a class="button button-small  button-positive" ng-click="editNamePopup($index)">
+                                      <i class="icon ion-edit" ></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                   </div>
 
                   <div class="item no-padding" align="middle">
