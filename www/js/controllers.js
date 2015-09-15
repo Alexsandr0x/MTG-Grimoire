@@ -30,8 +30,10 @@ angular.module('app.controllers', [])
   })
 
 .controller('ScoreController', function ($scope, $stateParams, $ionicActionSheet, $ionicPopup) {
-
-  $scope.players = [
+  var DEFAULT_PLAYERS_NAME = [
+    'Kiora', 'Gideon', 'Jace', 'Ajani', 'Chandra', 'Bolas', 'Sorin'
+  ];
+  var defaultPlayers = [
     {
       name: "Jace Beleren",
       life: 20,
@@ -44,23 +46,50 @@ angular.module('app.controllers', [])
     }
   ];
 
+  $scope.players = window.localStorage['Players'] ? JSON.parse(window.localStorage['MTGPlayer']) : defaultPlayers;
+
+  storePlayers = function () {
+    window.localStorage['Players'] = JSON.stringify($scope.players);
+  }
+
+  $scope.deletePlayer = function (index) {
+    $scope.players.splice(index, 1);
+    storePlayers();
+
+  }
+
+  $scope.addPlayer = function () {
+    var index = DEFAULT_PLAYERS_NAME[(Number(Math.random() * DEFAULT_PLAYERS_NAME.length)) | 0];
+    var player = {
+      name: index,
+      life: 20,
+      infect: 0
+    }
+    $scope.players.push(player);
+    storePlayers();
+  }
+
   $scope.changeLP = function (index, hit) {
     $scope.players[index].life += hit;
     if ($scope.players[index].life < 0) $scope.players[index].life = 0;
+    storePlayers();
   }
 
   $scope.resetLP = function (index) {
     $scope.players[index].life = 20;
+    storePlayers();
   }
 
   $scope.changeI = function (index, hit) {
     $scope.players[index].infect += hit;
     if ($scope.players[index].infect < 0) $scope.players[index].infect = 0;
     if ($scope.players[index].infect > 10) $scope.players[index].infect = 10;
+    storePlayers();
   }
 
   $scope.resetI = function (index) {
     $scope.players[index].infect = 0;
+    storePlayers();
   }
 
   $scope.showOptions = function () {
@@ -88,6 +117,8 @@ angular.module('app.controllers', [])
       scope: $scope,
       template: '<input ng-model="players[' + index + '].name">'
     });
+
+    storePlayers();
   };
 
 

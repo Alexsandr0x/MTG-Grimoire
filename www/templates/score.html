@@ -1,72 +1,88 @@
 <ion-view title="MTG Grimoire">
 
   <style type="text/css">
-      .no-padding {
-        padding: 0 !important;
-      }
+    .no-padding {
+      padding: 0 !important;
+    }
   </style>
 
   <div>
     <div>
-        <div ng-controller="TransitionController">
-          <div class="bar bar-header bar-royal">
+      <div ng-controller="TransitionController">
+        <div class="bar bar-header bar-royal">
           <button ng-click="goToMenu()" class="button icon-left ion-chevron-left button-clear button-dark"></button>
           <h1 class="title">MTG Grimoire</h1>
-          </div>
         </div>
+      </div>
     </div>
-        <ion-content padding="true" class="has-header">
-          <div ng-controller="ScoreController">
-          <div class="row">
-              <div class="col">
-                <div class="card no-margin" ng-repeat="player in players">
-                  <div class="item item-divider">
-                      <div class="row">
-                            <h3 class="col col-33">{{player.name}}</h3>
-                            <div class="col col-10 col-offset-58">
-                                <div class="button-bar">
-                                    <a class="button button-small  button-assertive" ng-click="editNamePopup($index)">
-                                      <i class="icon ion-minus-circled" ></i>
-                                    </a>
-                                    <a class="button button-small  button-positive" ng-click="editNamePopup($index)">
-                                      <i class="icon ion-edit" ></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                  </div>
-
-                  <div class="item no-padding" align="middle">
-                    <h1 id="life">{{player.life}}</h1>
-                    <div class="row">
-                      <div class="col">
-                        <h2 id="infect">{{player.infect}} infect</h2>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="item no-padding" align="middle">
+    <ion-content padding="true" class="has-header">
+      <div ng-controller="ScoreController">
+        <div class="row">
+          <div class="col">
+            <div class="card no-margin" ng-repeat="player in players">
+              <div class="item item-divider">
+                <div class="row">
+                  <h3 class="col col-33">{{player.name}}</h3>
+                  <div class="col col-10 col-offset-58">
                     <div class="button-bar">
-                      <a class="button button-small button-energized" ng-click="changeLP($index,-5)"><div class="item-text-wrap">-5</div></a>
-                      <a class="button button-small button-energized" ng-click="changeLP($index,-1)"><div class="item-text-wrap">-1</div></a>
-                      <a class="button button-small button-energized" ng-click="resetLP($index)"><div class="item-text-wrap">20</div></a>
-                      <a class="button button-small button-energized" ng-click="changeLP($index,+1)"><div class="item-text-wrap">+1</div></a>
-                      <a class="button button-small button-energized" ng-click="changeLP($index,+5)"><div class="item-text-wrap">+5</div></a>
-                    </div>
-                  </div>
-                  <div class="item no-padding" align="middle">
-                    <div class="button-bar">
-                      <a class="button button-small button-balanced" ng-click="changeI($index,-1)"><div class="item-text-wrap">-1</div></a>
-                      <a class="button button-small button-balanced" ng-click="resetI($index)"><div class="item-text-wrap">0</div></a>
-                      <a class="button button-small button-balanced" ng-click="changeI($index,+1)"><div class="item-text-wrap">+1</div></a>
+                      <a class="button button-small  button-assertive" ng-click="deletePlayer($index)">
+                        <i class="icon ion-minus-circled"></i>
+                      </a>
+                      <a class="button button-small  button-positive" ng-click="editNamePopup($index)">
+                        <i class="icon ion-edit"></i>
+                      </a>
                     </div>
                   </div>
                 </div>
               </div>
+
+              <div class="item no-padding" align="middle">
+                <h1 id="life">{{player.life}}</h1>
+                <div class="row">
+                  <div class="col">
+                    <h2 id="infect">{{player.infect}} infect</h2>
+                  </div>
+                </div>
+              </div>
+              <div class="item no-padding" align="middle">
+                <div class="button-bar">
+                  <a class="button button-small button-energized" ng-click="changeLP($index,-5)">
+                    <div class="item-text-wrap">-5</div>
+                  </a>
+                  <a class="button button-small button-energized" ng-click="changeLP($index,-1)">
+                    <div class="item-text-wrap">-1</div>
+                  </a>
+                  <a class="button button-small button-energized" ng-click="resetLP($index)">
+                    <div class="item-text-wrap">20</div>
+                  </a>
+                  <a class="button button-small button-energized" ng-click="changeLP($index,+1)">
+                    <div class="item-text-wrap">+1</div>
+                  </a>
+                  <a class="button button-small button-energized" ng-click="changeLP($index,+5)">
+                    <div class="item-text-wrap">+5</div>
+                  </a>
+                </div>
+              </div>
+              <div class="item no-padding" align="middle">
+                <div class="button-bar">
+                  <a class="button button-small button-balanced" ng-click="changeI($index,-1)">
+                    <div class="item-text-wrap">-1</div>
+                  </a>
+                  <a class="button button-small button-balanced" ng-click="resetI($index)">
+                    <div class="item-text-wrap">0</div>
+                  </a>
+                  <a class="button button-small button-balanced" ng-click="changeI($index,+1)">
+                    <div class="item-text-wrap">+1</div>
+                  </a>
+                </div>
+              </div>
             </div>
-            <button class="button button-small button-assertive" ng-click="showOptions()">
-                  Configurations
+            <button class="button button-small button-assertive" ng-click="addPlayer()">
+              Add
             </button>
           </div>
-        </ion-content>
+        </div>
+      </div>
+    </ion-content>
   </div>
 </ion-view>
