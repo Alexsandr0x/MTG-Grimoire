@@ -15,7 +15,7 @@
         <div class="card">
 
           <div class="item">
-            <img ng-repeat="c in card.cost track by $index" ng-src="http://gatherer.wizards.com/Handlers/Image.ashx?size=large&type=symbol&name={{c}}">
+            <img ng-repeat="c in card.cost track by $index" ng-src="http://gatherer.wizards.com/Handlers/Image.ashx?size=large&type=symbol&name={{c}}" class="mana-icon">
           </div>
           <div id="cardinfo" class="item item-inset">
             type: <a ng-repeat="type in card.types">
