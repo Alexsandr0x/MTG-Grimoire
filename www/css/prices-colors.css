@@ -1,0 +1,16 @@
+.prices-low {
+  background-color: #00FF00;
+}
+
+.prices-median {
+  background-color: #FFFF66;
+}
+
+.prices-high {
+  background-color: #FF3300;
+}
+
+.mana-icon {
+  width: 32px;
+  height: 32px;
+}
