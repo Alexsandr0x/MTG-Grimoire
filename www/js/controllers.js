@@ -1,4 +1,5 @@
-angular.module('app.controllers', [])
+angular.module('app.controllers', ['ngSanitize'])
+
   .controller('SearchController', function ($scope, $http) {
     var pendingTask;
 
@@ -155,8 +156,20 @@ angular.module('app.controllers', [])
 
         //Spliting mana cost string
         $scope.card.cost = $scope.card.cost.split(/[{}]/).filter(function (e) {
-          return e
+          return e;
         });
+
+        for(mana in $scope.card.cost){
+          $scope.card.cost[mana] = $scope.card.cost[mana].replace("/","");
+        }
+         $scope.card.text = $scope.card.text.replace(/(?:\r\n|\r|\n)/g, '<br />');
+         $scope.card.text = $scope.card.text.replace(/{(.*?)}/g,
+          function replacer(match){
+            match = match.replace("{","").replace("}","");
+
+            return "<img src=\"http://gatherer.wizards.com/Handlers/Image.ashx?size=small&type=symbol&name="+match.replace("/","")+"\"/>"
+          }
+          );
       });
   }
 

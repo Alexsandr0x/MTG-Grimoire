@@ -9,13 +9,12 @@
     <div class="bar bar-subheader">
       <h2 class="title">{{card.name}}</h2>
     </div>
-
     <ion-content class="mtg-card has-subheader" padding="true">
       <div ng-model="card">
         <div class="card">
 
           <div class="item">
-            <img ng-repeat="c in card.cost track by $index" ng-src="http://gatherer.wizards.com/Handlers/Image.ashx?size=large&type=symbol&name={{c}}" class="mana-icon">
+            <img ng-repeat="c in card.cost track by $index" ng-src="http://gatherer.wizards.com/Handlers/Image.ashx?size=medium&type=symbol&name={{c}}" class="mana-icon">
           </div>
           <div id="cardinfo" class="item item-inset">
             type: <a ng-repeat="type in card.types">
@@ -24,14 +23,18 @@
           </div>
           <div id="cardtext" class="item">
             <div class="item item-text-wrap">
-              <p>{{card.text}}</p>
+              <!--<p>{{card.text}}</p>-->
+              <div ng-bind-html="card.text"></div>
             </div>
           </div>
         </div>
 
         <div class="card" ng-repeat="edition in card.editions">
 
-          <div class="item">{{edition.set}}</div>
+          <div class="item row" align="left">
+            <button class="button button-small button-icon icon ion-navicon"></button>
+            <div class="col col-75" align="center" >{{edition.set}}</div>
+          </div>
           <img ng-src="{{edition.image_url}}">
           <div class="item">
             <div class="row">
