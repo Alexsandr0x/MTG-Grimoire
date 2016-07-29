@@ -49,7 +49,7 @@ angular.module('app.controllers', ['ngSanitize'])
 
   $scope.players = window.localStorage['Players'] ? JSON.parse(window.localStorage['MTGPlayer']) : defaultPlayers;
 
-  storePlayers = function () {
+  var storePlayers = function () {
     window.localStorage['Players'] = JSON.stringify($scope.players);
   }
 
@@ -159,7 +159,7 @@ angular.module('app.controllers', ['ngSanitize'])
           return e;
         });
 
-        for(mana in $scope.card.cost){
+        for(var mana in $scope.card.cost){
           $scope.card.cost[mana] = $scope.card.cost[mana].replace("/","");
         }
          $scope.card.text = $scope.card.text.replace(/(?:\r\n|\r|\n)/g, '<br />');

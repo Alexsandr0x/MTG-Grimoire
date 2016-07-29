@@ -1,20 +1,29 @@
 <ion-view title="MTG Grimoire">
-
   <style type="text/css">
     .no-padding {
       padding: 0 !important;
     }
-  </style>
-
+</style>
   <div>
-    <div>
-      <div ng-controller="TransitionController">
-        <div class="bar bar-header bar-royal">
-          <button ng-click="goToMenu()" class="button icon-left ion-chevron-left button-clear button-dark"></button>
-          <h1 class="title">MTG Grimoire</h1>
+    <div ng-controller="TransitionController">
+      <div class="bar bar-header bar-royal">
+        <button ng-click="goToMenu()" class="button icon-left ion-chevron-left button-clear button-dark"></button>
+        <h1 class="title">MTG Grimoire</h1>
+      </div>
+    </div>
+  </div>
+      
+  <ion-content padding="true" class="has-header">
+    <div ng-controller="ScoreController">
+      <div ng-model="players">
+        <div ng-repeat="player in players">
+          <div class="card">
+            <div class="item item-text-wrap">
+              {{player.name}}
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    </ion-content>
-  </div>
+  </ion-content>
 </ion-view>
