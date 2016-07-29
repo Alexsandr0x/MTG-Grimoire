@@ -1,0 +1,16 @@
+FEATURES IN PROGRESS:
+ - Match Manager
+    * add players, set players, delete players
+    * life point, poison counters
+    * any X counter (like experience counter)
+    * format templates (common match, Duel Commander, Commander)
+
+
+
+FEATURES IN BACKLOG:
+- Card Search
+    * get prices from MTGPlayer
+    
+- OCR card search
+    * get image
+    * search for name, get original language and return english returning
